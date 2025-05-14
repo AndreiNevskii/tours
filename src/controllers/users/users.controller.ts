@@ -4,6 +4,7 @@ import { UsersService } from 'src/services/users/users.service';
 import { User } from 'src/schemas/user';
 import { UserDto } from 'src/dto/user-dto';
 import { AuthGuard } from '@nestjs/passport';
+import { JwtAuthGuardService } from 'src/services/Authentification/jwt-auth.guard/jwt-auth.guard.service';
  
 @Controller('users')
 export class UsersController {
@@ -21,6 +22,8 @@ export class UsersController {
         return this.userService.getUserById(id);
     }
  
+
+    // @UseGuards(JwtAuthGuardService)
      @Post()
      sendUser(@Body() data: UserDto): Promise<User> {
  

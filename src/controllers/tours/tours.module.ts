@@ -6,6 +6,7 @@ import { JwtModule } from '@nestjs/jwt';
 import { jwtConstants } from 'src/static/private/constants';
 import { ToursService } from 'src/services/tours/tours.service';
 import { Tour, TourSchema } from 'src/schemas/tour';
+import { JwtStrategyService } from 'src/services/Authentification/jwt.strategy/jwt.strategy.service';
 
 @Module({
     controllers: [ToursController],
