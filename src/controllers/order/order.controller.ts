@@ -8,7 +8,7 @@ export class OrderController {
     constructor(private ordersService: OrdersService) {}
 
     @Post() 
-    initOrders(@Body() data: OrderDto): void {
+    initTours(@Body() data: OrderDto): void {
         const orderData = new OrderDto(data.age, data.birthDay, data.cardNumber, data.tourId, data.userId);
         this.ordersService.sendOrder(orderData);
     }    
