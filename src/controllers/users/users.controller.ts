@@ -23,7 +23,7 @@ export class UsersController {
     }
  
 
-    // @UseGuards(JwtAuthGuardService)
+    // @UseGuards(JwtAuthGuardService) проверка работы guard
      @Post()
      sendUser(@Body() data: UserDto): Promise<User> {
  
