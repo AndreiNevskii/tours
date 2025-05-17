@@ -14,4 +14,8 @@ export class OrdersService {
     return orderData.save();
   }
 
+   async deleteOrders(): Promise<any>{
+           return this.orderModel.deleteMany();
+         }
+
 }

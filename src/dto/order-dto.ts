@@ -5,13 +5,13 @@ export class OrderDto implements IOrder {
     birthDay: string;
     cardNumber: string;
     tourId: string;
-    userId: string;
+    // userId?: string;
 
-    constructor(age, birthDay, cardNumber, tourId, userId) {
+    constructor(age, birthDay, cardNumber, tourId) {
     this.age = age;
     this.birthDay = birthDay;
     this.cardNumber = cardNumber;
     this.tourId = tourId;
-    this.userId = userId;
+    // this.userId = userId;
     }
 }

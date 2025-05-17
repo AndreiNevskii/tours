@@ -16,6 +16,6 @@ export class Order implements IOrder {
  
     @Prop() tourId: string
 
-    @Prop() userId: string     
+    // @Prop() userId: string     
  }   
  export const OrderSchema = SchemaFactory.createForClass(Order);
