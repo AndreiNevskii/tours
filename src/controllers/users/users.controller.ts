@@ -5,6 +5,7 @@ import { User } from 'src/schemas/user';
 import { UserDto } from 'src/dto/user-dto';
 import { AuthGuard } from '@nestjs/passport';
 import { JwtAuthGuardService } from 'src/services/Authentification/jwt-auth.guard/jwt-auth.guard.service';
+import { UserAuthPipe } from 'src/pipes/user-auth.pipe';
  
 @Controller('users')
 export class UsersController {
@@ -61,7 +62,7 @@ export class UsersController {
 
     @UseGuards(AuthGuard('local'))
      @Post(":login")
-     authUser(@Body() data: UserDto, @Param('login') login): any {
+     authUser(@Body(UserAuthPipe) data: UserDto, @Param('login') login): any {
        return this.userService.login(data); 
      } 
 

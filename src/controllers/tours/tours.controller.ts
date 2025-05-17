@@ -1,5 +1,6 @@
 import { Controller, Delete, Get, Param, Post } from '@nestjs/common';
 import { ITour } from 'src/interfaces/tour';
+import { ValidationParamIdPipe } from 'src/pipes/param-id.pipe';
 import { Tour } from 'src/schemas/tour';
 import { ToursService } from 'src/services/tours/tours.service';
 
@@ -28,9 +29,9 @@ export class ToursController {
        this.toursService.deleteTours();
     }
 
-    @Get()
-        getAllTours(): Promise<Tour[]> {
-            return this.toursService.getAllTours();
+     @Get()
+     getAllTours(): Promise<Tour[]> {
+             return this.toursService.getAllTours();
         }
 
     // @Get(":id")
@@ -38,11 +39,11 @@ export class ToursController {
     //         return this.toursService.getTourById(id);
     //     }
 
-//     @Get(":id")
-//          getTourById(@Param('id', ValidationParamIdPipe) id): Promise<Tour|null> {
-//              return this.toursService.getTourById(id);
-//          }
-// }  
+     @Get(":id")
+          getTourById(@Param('id', ValidationParamIdPipe) id): Promise<Tour|null> {
+              return this.toursService.getTourById(id);
+          }
+ }  
    
 
 
@@ -115,4 +116,4 @@ export class ToursController {
     //      getTourById(@Param('id', ValidationParamIdPipe) id): Promise<Tour|null> {
     //          return this.toursService.getTourById(id);
     //      }
-}
+
