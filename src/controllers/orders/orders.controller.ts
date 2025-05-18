@@ -1,6 +1,7 @@
 import { Body, Controller, Delete, Post } from '@nestjs/common';
 import { OrderDto } from 'src/dto/order-dto';
 import { IOrder } from 'src/interfaces/order';
+import { Order } from 'src/schemas/order';
 import { OrdersService } from 'src/services/orders/orders/orders.service';
 
 @Controller('orders')
@@ -15,9 +16,9 @@ export class OrdersController {
     // }   
 
     @Post() 
-    initOrder(@Body() data: OrderDto): void {
+    initOrder(@Body() data: OrderDto): Promise<Order> {
         const orderData = new OrderDto(data.name, data.age, data.birthDay, data.cardNumber, data.tourId);
-        this.ordersService.sendOrder(orderData);
+        return this.ordersService.sendOrder(orderData);
     }   
     
     @Delete()
