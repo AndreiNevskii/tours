@@ -7,7 +7,8 @@ export type OrderDocument = HydratedDocument<Order>;
  
 @Schema()
 export class Order implements IOrder {
- 
+     @Prop() name: string
+   
     @Prop() age: string;
  
     @Prop() birthDay: string;
@@ -16,6 +17,8 @@ export class Order implements IOrder {
  
     @Prop() tourId: string
 
-    // @Prop() userId: string     
+   //  @Prop() userId: string
+
+   //  @Prop() _id: string     
  }   
  export const OrderSchema = SchemaFactory.createForClass(Order);
