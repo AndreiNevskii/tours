@@ -14,6 +14,10 @@ export class OrdersService {
     return orderData.save();
   }
 
+  async getOrders(): Promise<Order[]> {
+  return this.orderModel.find();
+  }
+
    async deleteOrders(): Promise<any>{
            return this.orderModel.deleteMany();
          }

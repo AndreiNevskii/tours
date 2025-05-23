@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Post } from '@nestjs/common';
 import { OrderDto } from 'src/dto/order-dto';
 import { IOrder } from 'src/interfaces/order';
 import { Order } from 'src/schemas/order';
@@ -16,14 +16,22 @@ export class OrdersController {
     // }   
 
     @Post() 
-    initOrder(@Body() data: OrderDto): Promise<Order> {
-        const orderData = new OrderDto(data.name, data.age, data.birthDay, data.cardNumber, data.tourId);
-        return this.ordersService.sendOrder(orderData);
+    initOrder(@Body() data: OrderDto): void {
+           this.ordersService.sendOrder(data);
+      
     }   
+
+
+    @Get()
+    getAllOrders(): Promise<Order[]> {
+    return this.ordersService.getOrders();
+    }
+
+
     
     @Delete()
-       removeAllOrders(): Promise<IOrder[]> {
-       return this.ordersService.deleteOrders();
+       removeAllOrders(): void {
+       this.ordersService.deleteOrders();
        } 
 
        

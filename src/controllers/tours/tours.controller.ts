@@ -29,10 +29,10 @@ export class ToursController {
        this.toursService.deleteTours();
     }
 
-     @Get()
-     getAllTours(): Promise<Tour[]> {
-             return this.toursService.getAllTours();
-        }
+    //  @Get()
+    //  getAllTours(): Promise<Tour[]> {
+    //          return this.toursService.getAllTours();
+    //     }
 
     // @Get(":id")
     //     getTourById(@Param('id') id): Promise<Tour> {

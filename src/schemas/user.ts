@@ -9,12 +9,12 @@ export class User implements IUser {
  
     @Prop() password: string;
  
-    @Prop() cardNumber: string;
+    // @Prop() cardNumber: string;
  
     @Prop() login: string
  
-    @Prop() email: string
+    // @Prop() email: string
 
-    @Prop() id: string     
+    // @Prop() id: string     
  }   
  export const UserSchema = SchemaFactory.createForClass(User);

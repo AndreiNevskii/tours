@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { TourDto } from 'src/dto/tour-dto';
-import { ITour } from 'src/interfaces/tour';
+import { ITour, ITourClient } from 'src/interfaces/tour';
 import { Tour, TourDocument } from 'src/schemas/tour';
 
 @Injectable()
@@ -14,7 +14,7 @@ export class ToursService {
 
    async generateTours(): Promise<any>{
   for (let i = 0; i <= this.toursCount; i++) {
-    const tour = new TourDto('test'+i, 'test description', 'test operator', '300'+i);
+    const tour = new TourDto('test'+i, 'test description', 'test operator', '300'+i, 'test img');
     const tourData = new this.tourModel(tour);
     await tourData.save();
    }
@@ -32,6 +32,13 @@ export class ToursService {
 
   async getTourById(id): Promise<ITour|null> {
         return this.tourModel.findById(id);
-    }              
+    }   
+    
+    
+    async uploadTour(body: ITourClient) {
+        const tour = new TourDto(body.name, body.description, body.tourOperator, body.price, body.img);
+        const tourData = new this.tourModel(tour);
+        await tourData.save();
+    }
      
 }
